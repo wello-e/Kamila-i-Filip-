@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#151019">
+
+<title>Niespodzianka 🎁</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        #55233b,
+        #100d13 60%
+    );
+
+    color: white;
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+    min-height: 100vh;
+
+}
+
+main {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+}
+
+.box {
+
+    text-align: center;
+
+    max-width: 500px;
+
+}
+
+.gift {
+
+    font-size: 90px;
+
+    animation:
+    float 2s infinite ease-in-out;
+
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+h1 {
+
+    font-size: 32px;
+
+    margin: 20px 0 10px;
+
+}
+
+p {
+
+    color: #d8cbd2;
+
+    line-height: 1.6;
+
+}
+
+button {
+
+    margin-top: 20px;
+
+    padding: 15px 25px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: #ff6f9f;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+.message {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 22px;
+
+    background: #211922;
+
+    border-radius: 22px;
+
+    border: 1px solid #44303b;
+
+}
+
+.back {
+
+    display: block;
+
+    margin-top: 25px;
+
+    color: #ffb6cc;
+
+    text-decoration: none;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<div class="box">
+
+<div class="gift">
+🎁
+</div>
+
+<h1>
+Mam coś dla Ciebie...
+</h1>
+
+<p>
+Ale najpierw musisz nacisnąć przycisk. ❤️
+</p>
+
+<button onclick="showMessage()">
+Otwórz niespodziankę
+</button>
+
+<div class="message" id="message">
+
+❤️
+
+<h2>
+Kamila...
+</h2>
+
+<p>
+
+To jeszcze nie jest prawdziwa niespodzianka.
+
+Ale obiecuję, że kiedy skończymy
+tę aplikację, tutaj będzie coś
+specjalnego tylko dla Ciebie.
+
+</p>
+
+<p>
+Kocham Cię ❤️
+</p>
+
+</div>
+
+<a href="index.html" class="back">
+← Wróć do naszej strony
+</a>
+
+</div>
+
+</main>
+
+
+<script>
+
+function showMessage() {
+
+    document.getElementById("message").style.display =
+        "block";
+
+}
+
+</script>
+
+</body>
+
+</html>
