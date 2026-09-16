@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#151019">
+
+<title>Kamila & Filip ❤️</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+:root {
+    --bg: #100d13;
+    --card: #1b161f;
+    --text: #fff7fb;
+    --muted: #b9aeb7;
+    --accent: #ff6f9f;
+    --accent2: #ffb6cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(
+        circle at 50% -10%,
+        #422033 0,
+        #100d13 45%
+    );
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 620px;
+    margin: auto;
+    padding: 26px 18px 100px;
+}
+
+.hero {
+    text-align: center;
+    padding: 45px 10px 35px;
+}
+
+.heart {
+    font-size: 48px;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+h1 {
+    font-size: 36px;
+    margin: 12px 0 5px;
+    letter-spacing: -1px;
+}
+
+.date {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.55;
+    color: #e5dce2;
+    margin: 22px auto 0;
+    max-width: 470px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #211a24, #17131b);
+    border: 1px solid #302631;
+    border-radius: 22px;
+    padding: 20px;
+    min-height: 130px;
+    box-shadow: 0 12px 35px #0005;
+}
+
+.icon {
+    font-size: 27px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin: 12px 0 5px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.section {
+    margin-top: 30px;
+}
+
+.section h2 {
+    font-size: 23px;
+    margin: 0 0 14px;
+}
+
+.timeline {
+    border-left: 2px solid #4b3541;
+    padding-left: 18px;
+}
+
+.event {
+    position: relative;
+    margin: 0 0 22px;
+}
+
+.event:before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 15px #ff6f9f99;
+}
+
+.event .when {
+    font-size: 12px;
+    color: var(--accent2);
+}
+
+.event h3 {
+    margin: 4px 0;
+}
+
+.event p {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.counter {
+    background: linear-gradient(135deg, #2d1b27, #1b151e);
+    border-radius: 24px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #44303b;
+}
+
+.counter .big {
+    font-size: 34px;
+    font-weight: 750;
+    margin: 8px 0;
+}
+
+.counter small {
+    color: var(--muted);
+}
+
+.note {
+    padding: 22px;
+    border-radius: 22px;
+    background: #211922;
+    border: 1px solid #352632;
+    line-height: 1.6;
+    color: #eee3e8;
+}
+
+footer {
+    text-align: center;
+    color: #766b73;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+@media(max-width:400px) {
+
+    h1 {
+        font-size: 31px;
+    }
+
+    .grid {
+        gap: 9px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+}
+  .card {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+.card:active {
+    transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+  <script>
+    if (sessionStorage.getItem("zalogowany") !== "true") {
+        window.location.href = "login.html";
+    }
+</script>
+
+<main>
+
+<section class="hero">
+
+    <div class="heart">❤️</div>
+
+    <h1>Kamila & Filip</h1>
+  <h2 id="powitanie"></h2>
+
+<script>
+    const uzytkownik = sessionStorage.getItem("uzytkownik");
+
+    document.getElementById("powitanie").textContent =
+        "Witaj, " + uzytkownik + " ❤️";
+</script>
+
+    <div class="date">
+        Razem od 15 lutego 2023
+    </div>
+
+    <p class="intro">
+        Nasza mała przestrzeń, w której zapisujemy
+        najpiękniejsze chwile, wspomnienia i wszystko
+        to, co jest tylko nasze.
+    </p>
+
+</section>
+
+
+<div class="counter">
+
+    <small>
+        Jesteśmy razem już
+    </small>
+
+    <div class="big" id="days">
+        — dni
+    </div>
+
+    <small>
+        i każdy kolejny jest kolejnym wspólnym
+        wspomnieniem ❤️
+    </small>
+
+</div>
+
+
+<div class="grid">
+
+    <a href="historia.html" class="card">
+
+        <div class="icon">📖</div>
+
+        <h2>
+            Nasza historia
+        </h2>
+
+        <p>
+            Od pierwszego dnia aż do teraz.
+        </p>
+
+    </a>
+
+
+    <a href="galeria.html" class="card">
+
+        <div class="icon">📸</div>
+
+        <h2>
+            Nasze zdjęcia
+        </h2>
+
+        <p>
+            Nasze najpiękniejsze wspólne chwile.
+        </p>
+
+    </a>
+
+
+    <a href="dla-kamili.html" class="card">
+
+        <div class="icon">💌</div>
+
+        <h2>
+            Dla Kamili
+        </h2>
+
+        <p>
+            Coś specjalnego ode mnie dla Ciebie.
+        </p>
+
+    </a>
+
+
+    <a href="niespodzianka.html" class="card">
+
+        <div class="icon">🎁</div>
+
+        <h2>
+            Niespodzianka
+        </h2>
+
+        <p>
+            Otwórz, jeśli jesteś gotowa... ❤️
+        </p>
+
+    </a>
+
+</div>
+
+
+    <div class="card">
+
+        <div class="icon">🎁</div>
+
+        <h2>
+            Niespodzianka
+        </h2>
+
+        <p>
+            Coś specjalnego czeka tutaj później.
+        </p>
+
+    </div>
+
+</div>
+
+
+<section class="section">
+
+<h2>
+    🗓️ Nasza historia
+</h2>
+
+<div class="timeline">
+
+
+<div class="event">
+
+    <div class="when">
+        15.02.2023
+    </div>
+
+    <h3>
+        Początek ❤️
+    </h3>
+
+    <p>
+        To właśnie tutaj zaczyna się historia
+        Kamili i Filipa.
+    </p>
+
+</div>
+
+
+<div class="event">
+
+    <div class="when">
+        Kolejne wspomnienia
+    </div>
+
+    <h3>
+        Do uzupełnienia...
+    </h3>
+
+    <p>
+        Dodamy tutaj Wasze randki, wyjazdy,
+        ważne rozmowy i wszystkie momenty,
+        które chcecie zachować.
+    </p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+    💌 Dla Kamili
+</h2>
+
+<div class="note">
+
+    Tutaj pojawi się Twój osobisty list
+    dla Kamili.
+
+    Napisz mi później, co chciałbyś jej
+    powiedzieć, a przygotujemy tę część
+    tak, żeby była naprawdę Wasza.
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>
+    📸 Galeria
+</h2>
+
+<div class="note">
+
+    Miejsce na Wasze zdjęcia.
+
+    Gdy je prześlesz, przygotuję galerię
+    z dużymi zdjęciami, podpisami i datami.
+
+</div>
+
+</section>
+
+
+<footer>
+
+    Kamila ❤️ Filip • od 15.02.2023
+
+</footer>
+
+</main>
+
+
+<script>
+
+const start = new Date("2023-02-15T00:00:00");
+
+const now = new Date();
+
+const days = Math.floor(
+    (now - start) / 86400000
+);
+
+document.getElementById("days").textContent =
+    days + " dni";
+
+
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker
+        .register("sw.js")
+        .catch(() => {});
+
+}
+
+</script>
+
+</body>
+</html>
