@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kamila & Filip ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(20, 15, 25, 0.55),
+                    rgba(20, 15, 25, 0.65)
+                ),
+                linear-gradient(135deg, #3b1728, #6b3048, #24151f);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            overflow: hidden;
+        }
+
+        /* delikatne serduszka w tle */
+
+        body::before {
+            content: "❤️   ♡   ❤️   ♡   ❤️   ♡";
+            position: absolute;
+
+            width: 100%;
+            top: 8%;
+
+            text-align: center;
+
+            font-size: 28px;
+            letter-spacing: 25px;
+
+            opacity: 0.08;
+
+            animation: floating 8s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+        }
+
+        /* główny panel */
+
+        .login-container {
+
+            position: relative;
+
+            width: 90%;
+            max-width: 430px;
+
+            padding: 45px 35px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+
+            animation: appear 0.8s ease;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* serce */
+
+        .heart {
+
+            font-size: 55px;
+
+            margin-bottom: 10px;
+
+            animation: heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+
+        }
+
+        h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+
+            color: rgba(255, 255, 255, 0.75);
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        /* pola */
+
+        .input-group {
+
+            text-align: left;
+
+            margin-bottom: 17px;
+        }
+
+        .input-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 13px;
+
+            background: rgba(255, 255, 255, 0.09);
+
+            color: white;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+
+            color: rgba(255, 255, 255, 0.45);
+
+        }
+
+        input:focus {
+
+            border-color: rgba(255, 150, 180, 0.8);
+
+            background: rgba(255, 255, 255, 0.13);
+
+            box-shadow:
+                0 0 15px rgba(255, 100, 150, 0.15);
+        }
+
+        /* przycisk */
+
+        button {
+
+            width: 100%;
+
+            margin-top: 8px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background: linear-gradient(
+                135deg,
+                #ff6b91,
+                #d94d72
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 25px rgba(220, 70, 110, 0.25);
+        }
+
+        button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(220, 70, 110, 0.4);
+        }
+
+        button:active {
+
+            transform: scale(0.98);
+
+        }
+
+        /* błąd */
+
+        #blad {
+
+            display: none;
+
+            margin-top: 17px;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            background: rgba(255, 70, 90, 0.12);
+
+            color: #ff9aaa;
+
+            font-size: 14px;
+        }
+
+        /* dolny napis */
+
+        .footer {
+
+            margin-top: 25px;
+
+            font-size: 12px;
+
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* telefon */
+
+        @media (max-width: 480px) {
+
+            .login-container {
+
+                padding: 35px 25px;
+
+            }
+
+            h1 {
+
+                font-size: 26px;
+
+            }
+
+            .heart {
+
+                font-size: 48px;
+
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="heart">❤️</div>
+
+        <h1>Kamila & Filip</h1>
+
+        <div class="subtitle">
+            Nasza mała historia zaczyna się tutaj...
+        </div>
+
+
+        <form onsubmit="zaloguj(event)">
+
+            <div class="input-group">
+
+                <label for="login">
+                    Login
+                </label>
+
+                <input
+                    type="text"
+                    id="login"
+                    placeholder="Wpisz swój login"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="haslo">
+                    Hasło
+                </label>
+
+                <input
+                    type="password"
+                    id="haslo"
+                    placeholder="Wpisz swoje hasło"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                Wejdź do naszej historii ❤️
+            </button>
+
+        </form>
+
+
+        <div id="blad">
+            Nieprawidłowy login lub hasło 💔
+        </div>
+
+
+        <div class="footer">
+            Tylko dla Kamili i Filipa ❤️
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function zaloguj(event) {
+
+            event.preventDefault();
+
+            const login =
+                document.getElementById("login").value.trim();
+
+            const haslo =
+                document.getElementById("haslo").value;
+
+
+            /*
+                ============================
+                DWA KONTA
+                ============================
+            */
+
+            const konta = {
+
+                Filip: {
+                    haslo: "Kamila123",
+                    imie: "Filip"
+                },
+
+                Kamila: {
+                    haslo: "Filip123",
+                    imie: "Kamila"
+                }
+
+            };
+
+
+            /*
+                ============================
+                SPRAWDZENIE DANYCH
+                ============================
+            */
+
+            if (
+                konta[login] &&
+                konta[login].haslo === haslo
+            ) {
+
+                sessionStorage.setItem(
+                    "zalogowany",
+                    "true"
+                );
+
+                sessionStorage.setItem(
+                    "uzytkownik",
+                    konta[login].imie
+                );
+
+
+                /*
+                    przejście na stronę
+                */
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+            else {
+
+                document.getElementById("blad")
+                    .style.display = "block";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
