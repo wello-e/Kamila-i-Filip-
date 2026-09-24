@@ -226,7 +226,54 @@ h1 {
 </head>
 
 <body>
+<script>
 
+function openPhoto(card) {
+
+    const img = card.querySelector("img");
+    const caption = card.querySelector(".photo-caption");
+
+    document.getElementById("modalImage").src = img.src;
+
+    document.getElementById("modalCaption").innerHTML =
+        caption.innerHTML;
+
+    document.getElementById("photoModal")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closePhoto(event) {
+
+    if (
+        event &&
+        event.target.id !== "photoModal" &&
+        !event.target.classList.contains("close-photo")
+    ) {
+        return;
+    }
+
+    document.getElementById("photoModal")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        document.getElementById("photoModal")
+            .classList.remove("active");
+
+        document.body.style.overflow = "";
+    }
+
+});
+
+</script>
 <main>
 
 <a href="index.html" class="back">
