@@ -218,6 +218,90 @@ footer {
 .card:active {
     transform: scale(0.97);
 }
+    ```css
+.love-counter {
+    text-align: center;
+    margin: 40px auto;
+    padding: 25px 20px;
+}
+
+.love-counter h2 {
+    color: #d94f70;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.time-box {
+    min-width: 90px;
+    padding: 14px 12px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 15px rgba(90, 45, 55, 0.1);
+
+    border: 1px solid rgba(217, 79, 112, 0.1);
+
+    transition: transform 0.2s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-3px);
+}
+
+.time-box span {
+    display: block;
+
+    color: #d94f70;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    line-height: 1.2;
+}
+
+.time-box small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8c6870;
+
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+
+    .counter {
+        gap: 8px;
+    }
+
+    .time-box {
+        min-width: 72px;
+        padding: 11px 8px;
+    }
+
+    .time-box span {
+        font-size: 20px;
+    }
+
+    .time-box small {
+        font-size: 10px;
+    }
+}
+```
+
 </style>
 </head>
 
@@ -244,7 +328,37 @@ footer {
         "Witaj, " + uzytkownik + " ❤️";
 </script>
 
-    <div class="love-counter"> <h2>Jesteśmy razem już ❤️</h2> <div class="counter"> <div class="time-box"> <span id="years">0</span> <small>lat</small> </div> <div class="time-box"> <span id="months">0</span> <small>miesięcy</small> </div> <div class="time-box"> <span id="weeks">0</span> <small>tygodni</small> </div> <div class="time-box"> <span id="days">0</span> <small>dni</small> </div> <div class="time-box"> <span id="hours">0</span> <small>godzin</small> </div> <div class="time-box"> <span id="minutes">0</span> <small>minut</small> </div> <div class="time-box"> <span id="seconds">0</span> <small>sekund</small> </div> </div> </div>
+    <div class="love-counter">
+        <h2>Jesteśmy razem już ❤️</h2>
+        <div class="counter">
+            <div class="time-box">
+                <span id="years">0</span>
+                <small>lat</small> </div>
+            <div class="time-box">
+                <span id="months">0</span>
+                <small>miesięcy</small>
+            </div>
+            <div class="time-box">
+                <span id="weeks">0</span>
+                <small>tygodni</small>
+            </div>
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>dni</small> </div>
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>godzin</small>
+            </div>
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>minut</small>
+            </div>
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>sekund</small>
+            </div>
+        </div>
+    </div>
 
 
 <div class="grid">
@@ -435,6 +549,162 @@ if ("serviceWorker" in navigator) {
 }
 
 </script>
+
+<script>
+
+    // ==========================================
+    // DATA, OD KTÓREJ JESTEŚCIE RAZEM
+    // ==========================================
+
+    const startDate = new Date("2023-02-15T21:00:00");
+
+
+    // ==========================================
+    // AKTUALIZACJA LICZNIKA
+    // ==========================================
+
+    function updateLoveCounter() {
+
+        const now = new Date();
+
+        let years =
+            now.getFullYear() - startDate.getFullYear();
+
+        let months =
+            now.getMonth() - startDate.getMonth();
+
+        let days =
+            now.getDate() - startDate.getDate();
+
+        let hours =
+            now.getHours() - startDate.getHours();
+
+        let minutes =
+            now.getMinutes() - startDate.getMinutes();
+
+        let seconds =
+            now.getSeconds() - startDate.getSeconds();
+
+
+        // ==========================================
+        // WYRÓWNANIE SEKUND
+        // ==========================================
+
+        if (seconds < 0) {
+
+            seconds += 60;
+            minutes--;
+
+        }
+
+
+        // ==========================================
+        // WYRÓWNANIE MINUT
+        // ==========================================
+
+        if (minutes < 0) {
+
+            minutes += 60;
+            hours--;
+
+        }
+
+
+        // ==========================================
+        // WYRÓWNANIE GODZIN
+        // ==========================================
+
+        if (hours < 0) {
+
+            hours += 24;
+            days--;
+
+        }
+
+
+        // ==========================================
+        // WYRÓWNANIE DNI
+        // ==========================================
+
+        if (days < 0) {
+
+            const previousMonth =
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    0
+                );
+
+            days += previousMonth.getDate();
+
+            months--;
+
+        }
+
+
+        // ==========================================
+        // WYRÓWNANIE MIESIĘCY
+        // ==========================================
+
+        if (months < 0) {
+
+            months += 12;
+            years--;
+
+        }
+
+
+        // ==========================================
+        // TYGODNIE
+        // ==========================================
+
+        const weeks =
+            Math.floor(days / 7);
+
+        const remainingDays =
+            days % 7;
+
+
+        // ==========================================
+        // WYŚWIETLANIE
+        // ==========================================
+
+        document.getElementById("years").textContent =
+            years;
+
+        document.getElementById("months").textContent =
+            months;
+
+        document.getElementById("weeks").textContent =
+            weeks;
+
+        document.getElementById("days").textContent =
+            remainingDays;
+
+        document.getElementById("hours").textContent =
+            hours;
+
+        document.getElementById("minutes").textContent =
+            minutes;
+
+        document.getElementById("seconds").textContent =
+            seconds;
+
+    }
+
+
+    // Uruchom od razu
+    updateLoveCounter();
+
+
+    // Aktualizuj co sekundę
+    setInterval(
+        updateLoveCounter,
+        1000
+    );
+
+</script>
+
 
 </body>
 </html>
