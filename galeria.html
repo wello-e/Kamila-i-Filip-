@@ -158,6 +158,68 @@ h1 {
     padding: 20px;
 
 }
+    .photo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+.photo-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.photo-modal img {
+    max-width: 90%;
+    max-height: 75vh;
+
+    border-radius: 5px;
+
+    transform: scale(0.8);
+    transition: transform 0.35s ease;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+}
+
+.photo-modal.active img {
+    transform: scale(1);
+}
+
+.close-photo {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 42px;
+
+    cursor: pointer;
+
+    z-index: 10000;
+}
+
+.modal-caption {
+    color: white;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 16px;
+}
 
 </style>
 
