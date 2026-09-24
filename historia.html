@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kupony Dla Kamili i Filipa ❤️</title>
+    <title>Nasze kupony ❤️</title>
 
     <style>
         * {
@@ -20,15 +20,12 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
-            padding: 25px 20px 50px;
+            padding: 25px 20px 60px;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+        /* POWRÓT */
 
         .back-button {
             display: inline-block;
@@ -42,8 +39,15 @@
             text-decoration: underline;
         }
 
+        /* NAGŁÓWEK */
+
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
         h1 {
-            font-size: 36px;
+            font-size: 38px;
             margin: 10px 0;
         }
 
@@ -52,9 +56,37 @@
             font-size: 16px;
         }
 
+        /* SEKCJA OSOBY */
+
+        .person-section {
+            margin-bottom: 55px;
+        }
+
+        .person-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .person-title h2 {
+            display: inline-block;
+            margin: 0;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: white;
+            color: #d6336c;
+            box-shadow: 0 5px 18px rgba(150, 50, 80, 0.12);
+        }
+
+        .person-title p {
+            margin-top: 10px;
+            color: #9b6070;
+        }
+
+        /* KUPONY */
+
         .coupons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -63,7 +95,7 @@
             background: white;
             border-radius: 20px;
             padding: 28px;
-            min-height: 250px;
+            min-height: 290px;
             box-shadow: 0 8px 25px rgba(150, 50, 80, 0.12);
             border: 2px dashed #f0a1b8;
             overflow: hidden;
@@ -74,6 +106,8 @@
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(150, 50, 80, 0.18);
         }
+
+        /* BOCZNE WYCIĘCIA */
 
         .coupon::before,
         .coupon::after {
@@ -96,10 +130,10 @@
         }
 
         .coupon-number {
-            font-size: 13px;
+            font-size: 12px;
             color: #c97891;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .coupon-icon {
@@ -107,17 +141,19 @@
             margin: 15px 0;
         }
 
-        .coupon h2 {
+        .coupon h3 {
             margin: 5px 0 10px;
             color: #c93668;
-            font-size: 24px;
+            font-size: 23px;
         }
 
         .coupon p {
             color: #79515d;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
+
+        /* PRZYCISK */
 
         .use-button {
             border: none;
@@ -125,7 +161,7 @@
             color: white;
             padding: 12px 22px;
             border-radius: 25px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
@@ -135,7 +171,7 @@
             transform: scale(1.05);
         }
 
-        /* WYKORZYSTANY KUPON */
+        /* WYKORZYSTANY */
 
         .coupon.used {
             background: #f1f1f1;
@@ -149,7 +185,7 @@
             box-shadow: 0 8px 25px rgba(150, 50, 80, 0.08);
         }
 
-        .coupon.used h2 {
+        .coupon.used h3 {
             color: #777;
         }
 
@@ -159,22 +195,42 @@
 
         .used-status {
             display: inline-block;
-            margin-top: 5px;
             padding: 10px 18px;
             border-radius: 20px;
             background: #d9d9d9;
             color: #666;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        @media (max-width: 700px) {
+        /* ODDZIELENIE SEKCJI */
+
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: #f0b4c5;
+            margin: 0 auto 55px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+            .coupons {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
             .coupons {
                 grid-template-columns: 1fr;
             }
 
             h1 {
                 font-size: 30px;
+            }
+
+            .coupon {
+                min-height: auto;
             }
         }
     </style>
@@ -184,237 +240,342 @@
 
 <div class="container">
 
-    <div class="header">
+    <!-- POWRÓT -->
 
-        <a href="index.html" class="back-button">
-            ← Wróć do strony głównej
-        </a>
+    <a href="index.html" class="back-button">
+        ← Wróć do strony głównej
+    </a>
+
+
+    <!-- NAGŁÓWEK -->
+
+    <div class="header">
 
         <h1>Nasze kupony ❤️</h1>
 
         <p class="subtitle">
-            Każdy kupon można wykorzystać tylko raz 😉
+            Każdy ma swoje własne kupony... i każdy można wykorzystać tylko raz 😉
         </p>
 
     </div>
 
 
-    <div class="coupons">
+    <!-- ========================= -->
+    <!-- KAMILA -->
+    <!-- ========================= -->
 
-        <!-- KUPON 1 -->
-        <div class="coupon" id="coupon-1">
+    <section class="person-section">
 
-            <div class="coupon-number">
-                KUPON #01
-            </div>
+        <div class="person-title">
 
-            <div class="coupon-icon">
-                🍕
-            </div>
-
-            <h2>Wspólna pizza</h2>
+            <h2>💗 KAMILA</h2>
 
             <p>
-                Ten kupon daje Ci prawo do wspólnego wyjścia
-                na pizzę. Ty wybierasz pizzę, ja stawiam ❤️
+                Kupony Kamili
             </p>
-
-            <button class="use-button" onclick="useCoupon(1)">
-                Wykorzystaj kupon
-            </button>
 
         </div>
 
 
-        <!-- KUPON 2 -->
-        <div class="coupon" id="coupon-2">
+        <div class="coupons">
 
-            <div class="coupon-number">
-                KUPON #02
+            <!-- KAMILA 1 -->
+
+            <div class="coupon" id="coupon-kamila-1">
+
+                <div class="coupon-number">
+                    KUPON KAMILA #01
+                </div>
+
+                <div class="coupon-icon">
+                    💆
+                </div>
+
+                <h3>Kupon na masaż</h3>
+
+                <p>
+                    Jeden porządny masaż bez marudzenia.
+                    Kamila wybiera kiedy ❤️
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('kamila-1')">
+                    Wykorzystaj kupon
+                </button>
+
             </div>
 
-            <div class="coupon-icon">
-                🎬
+
+            <!-- KAMILA 2 -->
+
+            <div class="coupon" id="coupon-kamila-2">
+
+                <div class="coupon-number">
+                    KUPON KAMILA #02
+                </div>
+
+                <div class="coupon-icon">
+                    🥰
+                </div>
+
+                <h3>Przytulasy bez limitu</h3>
+
+                <p>
+                    Specjalny kupon na przytulanie.
+                    Ilość przytulasów: absolutnie bez limitu ❤️
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('kamila-2')">
+                    Wykorzystaj kupon
+                </button>
+
             </div>
 
-            <h2>Wieczór filmowy</h2>
+
+            <!-- KAMILA 3 -->
+
+            <div class="coupon" id="coupon-kamila-3">
+
+                <div class="coupon-number">
+                    KUPON KAMILA #03
+                </div>
+
+                <div class="coupon-icon">
+                    🍦
+                </div>
+
+                <h3>Coś słodkiego</h3>
+
+                <p>
+                    Jeden wspólny wypad na coś słodkiego.
+                    Lody, gofry, deser — Kamila wybiera 😋
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('kamila-3')">
+                    Wykorzystaj kupon
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ODZIELENIE -->
+
+    <div class="divider"></div>
+
+
+    <!-- ========================= -->
+    <!-- FILIP -->
+    <!-- ========================= -->
+
+    <section class="person-section">
+
+        <div class="person-title">
+
+            <h2>💙 FILIP</h2>
 
             <p>
-                Jeden wspólny wieczór filmowy.
-                Film wybierasz Ty, przekąski ogarniamy razem ❤️
+                Kupony Filipa
             </p>
-
-            <button class="use-button" onclick="useCoupon(2)">
-                Wykorzystaj kupon
-            </button>
 
         </div>
 
 
-        <!-- KUPON 3 -->
-        <div class="coupon" id="coupon-3">
+        <div class="coupons">
 
-            <div class="coupon-number">
-                KUPON #03
+            <!-- FILIP 1 -->
+
+            <div class="coupon" id="coupon-filip-1">
+
+                <div class="coupon-number">
+                    KUPON FILIP #01
+                </div>
+
+                <div class="coupon-icon">
+                    🍕
+                </div>
+
+                <h3>Wspólna pizza</h3>
+
+                <p>
+                    Jeden wspólny wypad na pizzę.
+                    Filip wybiera miejsce ❤️
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('filip-1')">
+                    Wykorzystaj kupon
+                </button>
+
             </div>
 
-            <div class="coupon-icon">
-                💆
+
+            <!-- FILIP 2 -->
+
+            <div class="coupon" id="coupon-filip-2">
+
+                <div class="coupon-number">
+                    KUPON FILIP #02
+                </div>
+
+                <div class="coupon-icon">
+                    🎬
+                </div>
+
+                <h3>Wieczór filmowy</h3>
+
+                <p>
+                    Jeden wieczór filmowy.
+                    Film wybiera Filip, przekąski ogarniamy razem 😎
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('filip-2')">
+                    Wykorzystaj kupon
+                </button>
+
             </div>
 
-            <h2>Kupon na masaż</h2>
 
-            <p>
-                Jeden porządny masaż bez marudzenia,
-                z pełnym zaangażowaniem ❤️
-            </p>
+            <!-- FILIP 3 -->
 
-            <button class="use-button" onclick="useCoupon(3)">
-                Wykorzystaj kupon
-            </button>
+            <div class="coupon" id="coupon-filip-3">
+
+                <div class="coupon-number">
+                    KUPON FILIP #03
+                </div>
+
+                <div class="coupon-icon">
+                    ❤️
+                </div>
+
+                <h3>Randka-niespodzianka</h3>
+
+                <p>
+                    Jeden kupon na randkę-niespodziankę.
+                    Szczegóły poznasz dopiero w dniu realizacji 😉
+                </p>
+
+                <button class="use-button"
+                        onclick="useCoupon('filip-3')">
+                    Wykorzystaj kupon
+                </button>
+
+            </div>
 
         </div>
 
-
-        <!-- KUPON 4 -->
-        <div class="coupon" id="coupon-4">
-
-            <div class="coupon-number">
-                KUPON #04
-            </div>
-
-            <div class="coupon-icon">
-                🥰
-            </div>
-
-            <h2>Przytulasy bez limitu</h2>
-
-            <p>
-                Możesz wykorzystać ten kupon na dowolną ilość
-                przytulania. Limit nie istnieje ❤️
-            </p>
-
-            <button class="use-button" onclick="useCoupon(4)">
-                Wykorzystaj kupon
-            </button>
-
-        </div>
-
-
-        <!-- KUPON 5 -->
-        <div class="coupon" id="coupon-5">
-
-            <div class="coupon-number">
-                KUPON #05
-            </div>
-
-            <div class="coupon-icon">
-                🍦
-            </div>
-
-            <h2>Coś słodkiego</h2>
-
-            <p>
-                Wspólne wyjście na coś dobrego.
-                Lody, gofry, deser... wybór należy do Ciebie 😋
-            </p>
-
-            <button class="use-button" onclick="useCoupon(5)">
-                Wykorzystaj kupon
-            </button>
-
-        </div>
-
-
-        <!-- KUPON 6 -->
-        <div class="coupon" id="coupon-6">
-
-            <div class="coupon-number">
-                KUPON #06
-            </div>
-
-            <div class="coupon-icon">
-                ❤️
-            </div>
-
-            <h2>Randka-niespodzianka</h2>
-
-            <p>
-                Jeden kupon na randkę, której szczegółów
-                dowiesz się dopiero w dniu realizacji 😉
-            </p>
-
-            <button class="use-button" onclick="useCoupon(6)">
-                Wykorzystaj kupon
-            </button>
-
-        </div>
-
-    </div>
+    </section>
 
 </div>
 
 
 <script>
 
-    function useCoupon(number) {
+    /*
+    ==========================================
+    WYKORZYSTYWANIE KUPONÓW
+    ==========================================
+    */
 
-        const coupon = document.getElementById("coupon-" + number);
+    function useCoupon(id) {
 
-        // sprawdzamy czy kupon został już wykorzystany
-        if (localStorage.getItem("coupon-" + number) === "used") {
+        const coupon = document.getElementById("coupon-" + id);
+
+        // Jeżeli kupon już wykorzystany — nic nie robimy
+        if (localStorage.getItem("coupon-" + id) === "used") {
             return;
         }
+
+
+        // Potwierdzenie
 
         const confirmUse = confirm(
             "Na pewno chcesz wykorzystać ten kupon? ❤️\n\n" +
             "Po wykorzystaniu nie będzie można go użyć ponownie."
         );
 
+
         if (!confirmUse) {
             return;
         }
 
-        // zapamiętujemy wykorzystanie kuponu
-        localStorage.setItem("coupon-" + number, "used");
 
-        // zmieniamy wygląd
+        // Zapisujemy wykorzystanie
+
+        localStorage.setItem("coupon-" + id, "used");
+
+
+        // Zmieniamy wygląd
+
         coupon.classList.add("used");
+
+
+        // Zmieniamy przycisk
 
         const button = coupon.querySelector(".use-button");
 
-        button.outerHTML = `
-            <div class="used-status">
-                ✓ WYKORZYSTANY
-            </div>
-        `;
+        if (button) {
+
+            button.outerHTML = `
+                <div class="used-status">
+                    ✓ WYKORZYSTANY
+                </div>
+            `;
+
+        }
+
     }
 
 
-    // sprawdzamy przy wejściu na stronę,
-    // które kupony były już wykorzystane
+    /*
+    ==========================================
+    SPRAWDZANIE KUPONÓW PO WEJŚCIU NA STRONĘ
+    ==========================================
+    */
 
-    for (let i = 1; i <= 6; i++) {
+    const coupons = [
+        "kamila-1",
+        "kamila-2",
+        "kamila-3",
+        "filip-1",
+        "filip-2",
+        "filip-3"
+    ];
 
-        if (localStorage.getItem("coupon-" + i) === "used") {
 
-            const coupon = document.getElementById("coupon-" + i);
+    coupons.forEach(function(id) {
 
-            coupon.classList.add("used");
+        if (localStorage.getItem("coupon-" + id) === "used") {
 
-            const button = coupon.querySelector(".use-button");
+            const coupon = document.getElementById("coupon-" + id);
 
-            if (button) {
+            if (coupon) {
 
-                button.outerHTML = `
-                    <div class="used-status">
-                        ✓ WYKORZYSTANY
-                    </div>
-                `;
+                coupon.classList.add("used");
+
+                const button = coupon.querySelector(".use-button");
+
+                if (button) {
+
+                    button.outerHTML = `
+                        <div class="used-status">
+                            ✓ WYKORZYSTANY
+                        </div>
+                    `;
+
+                }
 
             }
+
         }
-    }
+
+    });
 
 </script>
 
