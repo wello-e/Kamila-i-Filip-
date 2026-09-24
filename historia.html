@@ -1,267 +1,422 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#151019">
-
-<title>Nasza historia ❤️</title>
-
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-
-    margin: 0;
-
-    background:
-    radial-gradient(
-        circle at 50% -10%,
-        #422033 0,
-        #100d13 50%
-    );
-
-    color: #fff7fb;
-
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
-    min-height: 100vh;
-}
-
-main {
-
-    max-width: 620px;
-
-    margin: auto;
-
-    padding:
-    20px 18px 80px;
-
-}
-
-.back {
-
-    display: inline-block;
-
-    color: #ffb6cc;
-
-    text-decoration: none;
-
-    margin-bottom: 30px;
-
-    font-size: 15px;
-
-}
-
-header {
-
-    text-align: center;
-
-    margin-bottom: 40px;
-
-}
-
-header .icon {
-
-    font-size: 50px;
-
-}
-
-h1 {
-
-    font-size: 32px;
-
-    margin: 12px 0 5px;
-
-}
-
-.subtitle {
-
-    color: #b9aeb7;
-
-}
-
-.timeline {
-
-    border-left:
-    2px solid #4b3541;
-
-    padding-left: 22px;
-
-}
-
-.event {
-
-    position: relative;
-
-    margin-bottom: 35px;
-
-    background: #1b161f;
-
-    padding: 20px;
-
-    border-radius: 20px;
-
-    border: 1px solid #302631;
-
-}
-
-.event::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: -29px;
-
-    top: 25px;
-
-    width: 11px;
-
-    height: 11px;
-
-    background: #ff6f9f;
-
-    border-radius: 50%;
-
-}
-
-.date {
-
-    color: #ffb6cc;
-
-    font-size: 13px;
-
-}
-
-h2 {
-
-    margin: 8px 0;
-
-}
-
-p {
-
-    color: #cfc4cb;
-
-    line-height: 1.6;
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kupony Dla Kamili i Filipa ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe6ee, #fff7fa);
+            color: #5a2636;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 20px 50px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            color: #d6336c;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .subtitle {
+            color: #9b6070;
+            font-size: 16px;
+        }
+
+        .coupons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .coupon {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            min-height: 250px;
+            box-shadow: 0 8px 25px rgba(150, 50, 80, 0.12);
+            border: 2px dashed #f0a1b8;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .coupon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(150, 50, 80, 0.18);
+        }
+
+        .coupon::before,
+        .coupon::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #ffe6ee;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .coupon::before {
+            left: -14px;
+        }
+
+        .coupon::after {
+            right: -14px;
+        }
+
+        .coupon-number {
+            font-size: 13px;
+            color: #c97891;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .coupon-icon {
+            font-size: 45px;
+            margin: 15px 0;
+        }
+
+        .coupon h2 {
+            margin: 5px 0 10px;
+            color: #c93668;
+            font-size: 24px;
+        }
+
+        .coupon p {
+            color: #79515d;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .use-button {
+            border: none;
+            background: linear-gradient(135deg, #e94f83, #d6336c);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .use-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* WYKORZYSTANY KUPON */
+
+        .coupon.used {
+            background: #f1f1f1;
+            border-color: #bbb;
+            opacity: 0.75;
+            transform: none;
+        }
+
+        .coupon.used:hover {
+            transform: none;
+            box-shadow: 0 8px 25px rgba(150, 50, 80, 0.08);
+        }
+
+        .coupon.used h2 {
+            color: #777;
+        }
+
+        .coupon.used p {
+            color: #888;
+        }
+
+        .used-status {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: #d9d9d9;
+            color: #666;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .coupons {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<main>
+<div class="container">
 
-<a href="index.html" class="back">
-← Wróć
-</a>
+    <div class="header">
 
-<header>
+        <a href="index.html" class="back-button">
+            ← Wróć do strony głównej
+        </a>
 
-<div class="icon">
-📖
+        <h1>Nasze kupony ❤️</h1>
+
+        <p class="subtitle">
+            Każdy kupon można wykorzystać tylko raz 😉
+        </p>
+
+    </div>
+
+
+    <div class="coupons">
+
+        <!-- KUPON 1 -->
+        <div class="coupon" id="coupon-1">
+
+            <div class="coupon-number">
+                KUPON #01
+            </div>
+
+            <div class="coupon-icon">
+                🍕
+            </div>
+
+            <h2>Wspólna pizza</h2>
+
+            <p>
+                Ten kupon daje Ci prawo do wspólnego wyjścia
+                na pizzę. Ty wybierasz pizzę, ja stawiam ❤️
+            </p>
+
+            <button class="use-button" onclick="useCoupon(1)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+
+        <!-- KUPON 2 -->
+        <div class="coupon" id="coupon-2">
+
+            <div class="coupon-number">
+                KUPON #02
+            </div>
+
+            <div class="coupon-icon">
+                🎬
+            </div>
+
+            <h2>Wieczór filmowy</h2>
+
+            <p>
+                Jeden wspólny wieczór filmowy.
+                Film wybierasz Ty, przekąski ogarniamy razem ❤️
+            </p>
+
+            <button class="use-button" onclick="useCoupon(2)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+
+        <!-- KUPON 3 -->
+        <div class="coupon" id="coupon-3">
+
+            <div class="coupon-number">
+                KUPON #03
+            </div>
+
+            <div class="coupon-icon">
+                💆
+            </div>
+
+            <h2>Kupon na masaż</h2>
+
+            <p>
+                Jeden porządny masaż bez marudzenia,
+                z pełnym zaangażowaniem ❤️
+            </p>
+
+            <button class="use-button" onclick="useCoupon(3)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+
+        <!-- KUPON 4 -->
+        <div class="coupon" id="coupon-4">
+
+            <div class="coupon-number">
+                KUPON #04
+            </div>
+
+            <div class="coupon-icon">
+                🥰
+            </div>
+
+            <h2>Przytulasy bez limitu</h2>
+
+            <p>
+                Możesz wykorzystać ten kupon na dowolną ilość
+                przytulania. Limit nie istnieje ❤️
+            </p>
+
+            <button class="use-button" onclick="useCoupon(4)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+
+        <!-- KUPON 5 -->
+        <div class="coupon" id="coupon-5">
+
+            <div class="coupon-number">
+                KUPON #05
+            </div>
+
+            <div class="coupon-icon">
+                🍦
+            </div>
+
+            <h2>Coś słodkiego</h2>
+
+            <p>
+                Wspólne wyjście na coś dobrego.
+                Lody, gofry, deser... wybór należy do Ciebie 😋
+            </p>
+
+            <button class="use-button" onclick="useCoupon(5)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+
+        <!-- KUPON 6 -->
+        <div class="coupon" id="coupon-6">
+
+            <div class="coupon-number">
+                KUPON #06
+            </div>
+
+            <div class="coupon-icon">
+                ❤️
+            </div>
+
+            <h2>Randka-niespodzianka</h2>
+
+            <p>
+                Jeden kupon na randkę, której szczegółów
+                dowiesz się dopiero w dniu realizacji 😉
+            </p>
+
+            <button class="use-button" onclick="useCoupon(6)">
+                Wykorzystaj kupon
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-<h1>
-Nasza historia
-</h1>
 
-<div class="subtitle">
-Kamila ❤️ Filip
-</div>
+<script>
 
-</header>
+    function useCoupon(number) {
 
+        const coupon = document.getElementById("coupon-" + number);
 
-<div class="timeline">
+        // sprawdzamy czy kupon został już wykorzystany
+        if (localStorage.getItem("coupon-" + number) === "used") {
+            return;
+        }
 
+        const confirmUse = confirm(
+            "Na pewno chcesz wykorzystać ten kupon? ❤️\n\n" +
+            "Po wykorzystaniu nie będzie można go użyć ponownie."
+        );
 
-<div class="event">
+        if (!confirmUse) {
+            return;
+        }
 
-<div class="date">
-15 lutego 2023
-</div>
+        // zapamiętujemy wykorzystanie kuponu
+        localStorage.setItem("coupon-" + number, "used");
 
-<h2>
-Początek ❤️
-</h2>
+        // zmieniamy wygląd
+        coupon.classList.add("used");
 
-<p>
+        const button = coupon.querySelector(".use-button");
 
-To właśnie tego dnia zaczęła się
-nasza wspólna historia.
-
-15.02.2023.
-
-To data, której nigdy nie zapomnimy.
-
-</p>
-
-</div>
-
-
-<div class="event">
-
-<div class="date">
-Do uzupełnienia
-</div>
-
-<h2>
-Pierwsze wspólne wspomnienia
-</h2>
-
-<p>
-
-Tutaj będziemy mogli opisać
-Wasze pierwsze spotkania,
-pierwszą randkę i wszystkie
-ważne momenty.
-
-</p>
-
-</div>
+        button.outerHTML = `
+            <div class="used-status">
+                ✓ WYKORZYSTANY
+            </div>
+        `;
+    }
 
 
-<div class="event">
+    // sprawdzamy przy wejściu na stronę,
+    // które kupony były już wykorzystane
 
-<div class="date">
-Do uzupełnienia
-</div>
+    for (let i = 1; i <= 6; i++) {
 
-<h2>
-Kolejne rozdziały ❤️
-</h2>
+        if (localStorage.getItem("coupon-" + i) === "used") {
 
-<p>
+            const coupon = document.getElementById("coupon-" + i);
 
-Każdy kolejny dzień dopisuje
-następną stronę naszej historii.
+            coupon.classList.add("used");
 
-</p>
+            const button = coupon.querySelector(".use-button");
 
-</div>
+            if (button) {
 
+                button.outerHTML = `
+                    <div class="used-status">
+                        ✓ WYKORZYSTANY
+                    </div>
+                `;
 
-</div>
+            }
+        }
+    }
 
-</main>
+</script>
 
 </body>
-
 </html>
