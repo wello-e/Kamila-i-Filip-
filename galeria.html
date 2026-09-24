@@ -98,7 +98,23 @@ h1 {
     repeat(2, 1fr);
 
     gap: 12px;
+    
 
+}
+    .gallery {
+    animation: galleryEnter 0.7s ease forwards;
+}
+
+@keyframes galleryEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .photo {
@@ -177,9 +193,12 @@ Kamila ❤️ Filip
 
 <div class="photo">
 
-<div class="placeholder">
-📷<br>
-Tutaj będzie zdjęcie
+<div class="photo-card" onclick="openPhoto(this)">
+    <img src="zdjecia/01.jpg" alt="Nasze wspomnienie">
+    <div class="photo-caption">
+        <strong>Kraków ❤️</strong>
+        <span>15.08.2026</span>
+    </div>
 </div>
 
 </div>
