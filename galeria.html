@@ -1,359 +1,1303 @@
+```html
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nasze wspomnienia ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5f7, #ffe4ea);
+            color: #3a252b;
+            padding: 30px 20px 60px;
+        }
+
+        /* ===== NAGŁÓWEK ===== */
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: headerEnter 0.8s ease;
+        }
 
-<meta charset="UTF-8">
+        .header h1 {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            color: #d94f70;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #8c6870;
+            font-size: 16px;
+        }
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+        @keyframes headerEnter {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
 
-<meta name="theme-color" content="#151019">
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-<title>Nasze zdjęcia ❤️</title>
+        /* ===== GALERIA ===== */
 
-<style>
+        .gallery {
+            max-width: 1150px;
+            margin: auto;
 
-* {
-    box-sizing: border-box;
-}
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 38px 30px;
 
-body {
+            animation: galleryEnter 0.9s ease;
+        }
 
-    margin: 0;
+        @keyframes galleryEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-    background:
-    radial-gradient(
-        circle at 50% -10%,
-        #422033 0,
-        #100d13 50%
-    );
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    color: #fff7fb;
+        /* ===== INSTAX ===== */
 
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+        .photo-card {
+            background: #fff;
 
-    min-height: 100vh;
-}
+            padding: 13px 13px 24px;
 
-main {
+            box-shadow:
+                0 8px 20px rgba(90, 45, 55, 0.16);
 
-    max-width: 620px;
+            cursor: pointer;
 
-    margin: auto;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
 
-    padding: 20px 18px 80px;
+            user-select: none;
+        }
 
-}
+        .photo-card:nth-child(4n + 1) {
+            transform: rotate(-2deg);
+        }
 
-.back {
+        .photo-card:nth-child(4n + 2) {
+            transform: rotate(1.5deg);
+        }
 
-    display: inline-block;
+        .photo-card:nth-child(4n + 3) {
+            transform: rotate(-1deg);
+        }
 
-    color: #ffb6cc;
+        .photo-card:nth-child(4n) {
+            transform: rotate(2deg);
+        }
 
-    text-decoration: none;
+        .photo-card:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-6px);
 
-    margin-bottom: 30px;
+            box-shadow:
+                0 16px 35px rgba(90, 45, 55, 0.25);
 
-}
+            z-index: 5;
+        }
 
-header {
+        .photo-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
 
-    text-align: center;
+            object-fit: cover;
 
-    margin-bottom: 30px;
+            display: block;
 
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f5f5,
+                    #e9e9e9
+                );
+        }
 
-header .icon {
+        /* ===== PUSTE ZDJĘCIE ===== */
 
-    font-size: 50px;
+        .empty-photo {
+            display: flex;
 
-}
+            align-items: center;
+            justify-content: center;
 
-h1 {
+            color: #b9a1a7;
 
-    font-size: 32px;
+            font-size: 38px;
+        }
 
-    margin: 12px 0 5px;
+        /* ===== PODPIS ===== */
 
-}
+        .photo-caption {
+            text-align: center;
+            padding-top: 14px;
+        }
 
-.subtitle {
+        .photo-caption strong {
+            display: block;
 
-    color: #b9aeb7;
+            font-family: Georgia, serif;
 
-}
+            font-size: 16px;
 
-.gallery {
+            color: #4b3037;
 
-    display: grid;
+            margin-bottom: 5px;
+        }
 
-    grid-template-columns:
-    repeat(2, 1fr);
+        .photo-caption span {
+            display: block;
 
-    gap: 12px;
-    
+            font-size: 12px;
 
-}
-    .gallery {
-    animation: galleryEnter 0.7s ease forwards;
-}
+            color: #9a777f;
+        }
 
-@keyframes galleryEnter {
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.98);
-    }
+        /* ===== PODPOWIEDŹ ===== */
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+        .hint {
+            text-align: center;
 
-.photo {
+            margin-top: 45px;
 
-    aspect-ratio: 1 / 1;
+            color: #9b737c;
 
-    border-radius: 18px;
+            font-size: 14px;
+        }
 
-    overflow: hidden;
+        /* ==================================================
+           MODAL
+        ================================================== */
 
-    background: #1b161f;
+        .photo-modal {
+            position: fixed;
 
-    border: 1px solid #302631;
+            inset: 0;
 
-}
+            background: rgba(18, 9, 12, 0.94);
 
-.photo img {
+            display: flex;
 
-    width: 100%;
+            align-items: center;
+            justify-content: center;
 
-    height: 100%;
+            flex-direction: column;
 
-    object-fit: cover;
+            padding: 30px;
 
-}
+            opacity: 0;
+            visibility: hidden;
 
-.placeholder {
+            transition: opacity 0.3s ease;
 
-    height: 100%;
+            z-index: 9999;
+        }
 
-    display: flex;
+        .photo-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    align-items: center;
+        /* ===== DUŻE ZDJĘCIE ===== */
 
-    justify-content: center;
+        .modal-photo-wrapper {
+            display: flex;
 
-    text-align: center;
+            align-items: center;
+            justify-content: center;
 
-    color: #8f828b;
+            width: 100%;
+            max-width: 1000px;
+        }
 
-    padding: 20px;
+        .photo-modal img {
+            max-width: 75vw;
+            max-height: 70vh;
 
-}
-    .photo-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.88);
+            object-fit: contain;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+            background: white;
 
-    opacity: 0;
-    visibility: hidden;
+            padding: 10px;
 
-    transition: opacity 0.3s ease;
-    z-index: 9999;
+            box-shadow:
+                0 20px 70px rgba(0, 0, 0, 0.55);
 
-    padding: 20px;
-}
+            transform: scale(0.75);
 
-.photo-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
+            transition:
+                transform 0.35s ease;
+        }
 
-.photo-modal img {
-    max-width: 90%;
-    max-height: 75vh;
+        .photo-modal.active img {
+            transform: scale(1);
+        }
 
-    border-radius: 5px;
+        /* ===== PODPIS MODALA ===== */
 
-    transform: scale(0.8);
-    transition: transform 0.35s ease;
+        .modal-caption {
+            color: white;
 
-    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-}
+            text-align: center;
 
-.photo-modal.active img {
-    transform: scale(1);
-}
+            margin-top: 18px;
 
-.close-photo {
-    position: absolute;
-    top: 25px;
-    right: 30px;
+            font-size: 16px;
+        }
 
-    background: none;
-    border: none;
+        .modal-caption strong {
+            display: block;
 
-    color: white;
-    font-size: 42px;
+            font-family: Georgia, serif;
 
-    cursor: pointer;
+            font-size: 21px;
 
-    z-index: 10000;
-}
+            margin-bottom: 5px;
+        }
 
-.modal-caption {
-    color: white;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 16px;
-}
+        .modal-caption span {
+            color: #e6cbd1;
+        }
 
-</style>
+        /* ===== PRZYCISKI LEWO / PRAWO ===== */
 
+        .gallery-arrow {
+            position: fixed;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 55px;
+            height: 55px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.13);
+
+            color: white;
+
+            font-size: 34px;
+
+            cursor: pointer;
+
+            z-index: 10001;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .gallery-arrow:hover {
+            background: rgba(255, 255, 255, 0.25);
+
+            transform:
+                translateY(-50%)
+                scale(1.1);
+        }
+
+        .arrow-left {
+            left: 25px;
+        }
+
+        .arrow-right {
+            right: 25px;
+        }
+
+        /* ===== ZAMKNIĘCIE ===== */
+
+        .close-photo {
+            position: absolute;
+
+            top: 20px;
+            right: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            font-size: 32px;
+
+            cursor: pointer;
+
+            z-index: 10002;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .close-photo:hover {
+            background: rgba(255, 255, 255, 0.25);
+
+            transform: scale(1.1);
+        }
+
+        /* ===== LICZNIK ===== */
+
+        .photo-counter {
+            position: absolute;
+
+            top: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: rgba(255, 255, 255, 0.75);
+
+            font-size: 14px;
+        }
+
+        /* ==================================================
+           TABLET
+        ================================================== */
+
+        @media (max-width: 900px) {
+
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        /* ==================================================
+           TELEFON
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 25px 12px 50px;
+            }
+
+            .header h1 {
+                font-size: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 22px 15px;
+            }
+
+            .photo-card {
+                padding: 8px 8px 16px;
+            }
+
+            .photo-caption {
+                padding-top: 9px;
+            }
+
+            .photo-caption strong {
+                font-size: 13px;
+            }
+
+            .photo-caption span {
+                font-size: 10px;
+            }
+
+            .gallery-arrow {
+                width: 43px;
+                height: 43px;
+
+                font-size: 27px;
+            }
+
+            .arrow-left {
+                left: 8px;
+            }
+
+            .arrow-right {
+                right: 8px;
+            }
+
+            .photo-modal {
+                padding: 15px;
+            }
+
+            .photo-modal img {
+                max-width: 85vw;
+                max-height: 65vh;
+            }
+
+            .close-photo {
+                top: 12px;
+                right: 12px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
-<script>
 
-function openPhoto(card) {
+    <!-- ==================================================
+         NAGŁÓWEK
+    ================================================== -->
 
-    const img = card.querySelector("img");
-    const caption = card.querySelector(".photo-caption");
+    <div class="header">
 
-    document.getElementById("modalImage").src = img.src;
+        <h1>Nasze wspomnienia ❤️</h1>
 
-    document.getElementById("modalCaption").innerHTML =
-        caption.innerHTML;
+        <p>
+            Mały album naszych najpiękniejszych chwil
+        </p>
 
-    document.getElementById("photoModal")
-        .classList.add("active");
-
-    document.body.style.overflow = "hidden";
-}
-
-
-function closePhoto(event) {
-
-    if (
-        event &&
-        event.target.id !== "photoModal" &&
-        !event.target.classList.contains("close-photo")
-    ) {
-        return;
-    }
-
-    document.getElementById("photoModal")
-        .classList.remove("active");
-
-    document.body.style.overflow = "";
-}
-
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-        document.getElementById("photoModal")
-            .classList.remove("active");
-
-        document.body.style.overflow = "";
-    }
-
-});
-
-</script>
-<main>
-
-<a href="index.html" class="back">
-← Wróć
-</a>
-
-<header>
-
-<div class="icon">
-📸
-</div>
-
-<h1>
-Nasze zdjęcia
-</h1>
-
-<div class="subtitle">
-Kamila ❤️ Filip
-</div>
-
-</header>
-
-
-<div class="gallery">
-
-
-<div class="photo">
-
-<div class="photo-card" onclick="openPhoto(this)">
-    <img src="/zdjęcie1.jpg" alt="Nasze wspomnienie">
-    <div class="photo-caption">
-        <strong>Kraków ❤️</strong>
-        <span>15.08.2026</span>
     </div>
-</div>
-
-</div>
 
 
-<div class="photo">
+    <!-- ==================================================
+         GALERIA
+    ================================================== -->
 
-<div class="placeholder">
-📷<br>
-Tutaj będzie zdjęcie
-</div>
-
-</div>
+    <div class="gallery">
 
 
-<div class="photo">
+        <!-- ================= INSTAX 1 ================= -->
 
-<div class="placeholder">
-📷<br>
-Tutaj będzie zdjęcie
-</div>
+        <div class="photo-card" onclick="openPhoto(0)">
 
-</div>
+            <img
+                src="zdjecia/zdjecie1.jpg"
+                alt="Wspomnienie 1"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
 
 
-<div class="photo">
+        <!-- ================= INSTAX 2 ================= -->
 
-<div class="placeholder">
-📷<br>
-Tutaj będzie zdjęcie
-</div>
+        <div class="photo-card" onclick="openPhoto(1)">
 
-</div>
+            <img
+                src="zdjecia/zdjecie2.jpg"
+                alt="Wspomnienie 2"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
 
 
-</div>
-<div id="photoModal" class="photo-modal" onclick="closePhoto(event)">
-    <button class="close-photo" onclick="closePhoto()">×</button>
+        <!-- ================= INSTAX 3 ================= -->
 
-    <img id="modalImage" src="" alt="Powiększone zdjęcie">
+        <div class="photo-card" onclick="openPhoto(2)">
 
-    <div id="modalCaption" class="modal-caption"></div>
-</div>
-</main>
+            <img
+                src="zdjecia/zdjecie3.jpg"
+                alt="Wspomnienie 3"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 4 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(3)">
+
+            <img
+                src="zdjecia/zdjecie4.jpg"
+                alt="Wspomnienie 4"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 5 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(4)">
+
+            <img
+                src="zdjecia/zdjecie5.jpg"
+                alt="Wspomnienie 5"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 6 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(5)">
+
+            <img
+                src="zdjecia/zdjecie6.jpg"
+                alt="Wspomnienie 6"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 7 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(6)">
+
+            <img
+                src="zdjecia/zdjecie7.jpg"
+                alt="Wspomnienie 7"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 8 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(7)">
+
+            <img
+                src="zdjecia/zdjecie8.jpg"
+                alt="Wspomnienie 8"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 9 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(8)">
+
+            <img
+                src="zdjecia/zdjecie9.jpg"
+                alt="Wspomnienie 9"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 10 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(9)">
+
+            <img
+                src="zdjecia/zdjecie10.jpg"
+                alt="Wspomnienie 10"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 11 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(10)">
+
+            <img
+                src="zdjecia/zdjecie11.jpg"
+                alt="Wspomnienie 11"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 12 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(11)">
+
+            <img
+                src="zdjecia/zdjecie12.jpg"
+                alt="Wspomnienie 12"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 13 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(12)">
+
+            <img
+                src="zdjecia/zdjecie13.jpg"
+                alt="Wspomnienie 13"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 14 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(13)">
+
+            <img
+                src="zdjecia/zdjecie14.jpg"
+                alt="Wspomnienie 14"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 15 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(14)">
+
+            <img
+                src="zdjecia/zdjecie15.jpg"
+                alt="Wspomnienie 15"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 16 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(15)">
+
+            <img
+                src="zdjecia/zdjecie16.jpg"
+                alt="Wspomnienie 16"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 17 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(16)">
+
+            <img
+                src="zdjecia/zdjecie17.jpg"
+                alt="Wspomnienie 17"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 18 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(17)">
+
+            <img
+                src="zdjecia/zdjecie18.jpg"
+                alt="Wspomnienie 18"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 19 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(18)">
+
+            <img
+                src="zdjecia/zdjecie19.jpg"
+                alt="Wspomnienie 19"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Nasze wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= INSTAX 20 ================= -->
+
+        <div class="photo-card" onclick="openPhoto(19)">
+
+            <img
+                src="zdjecia/zdjecie20.jpg"
+                alt="Wspomnienie 20"
+            >
+
+            <div class="photo-caption">
+
+                <strong>Wspomnienie ❤️</strong>
+
+                <span>Dodaj datę</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hint">
+        Kliknij zdjęcie, żeby je powiększyć ❤️
+    </div>
+
+
+    <!-- ==================================================
+         POWIĘKSZENIE
+    ================================================== -->
+
+    <div
+        id="photoModal"
+        class="photo-modal"
+        onclick="backgroundClose(event)"
+    >
+
+        <div class="photo-counter" id="photoCounter">
+            1 / 20
+        </div>
+
+
+        <button
+            class="close-photo"
+            onclick="closePhoto()"
+        >
+            ×
+        </button>
+
+
+        <button
+            class="gallery-arrow arrow-left"
+            onclick="previousPhoto(event)"
+        >
+            ←
+        </button>
+
+
+        <div class="modal-photo-wrapper">
+
+            <img
+                id="modalImage"
+                src=""
+                alt="Powiększone zdjęcie"
+            >
+
+        </div>
+
+
+        <button
+            class="gallery-arrow arrow-right"
+            onclick="nextPhoto(event)"
+        >
+            →
+        </button>
+
+
+        <div
+            id="modalCaption"
+            class="modal-caption"
+        >
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        const photos = [
+
+            {
+                image: "zdjecia/zdjecie1.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie2.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie3.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie4.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie5.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie6.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie7.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie8.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie9.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie10.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie11.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie12.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie13.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie14.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie15.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie16.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie17.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie18.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie19.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            },
+
+            {
+                image: "zdjecia/zdjecie20.jpg",
+                title: "Nasze wspomnienie ❤️",
+                date: "Dodaj datę"
+            }
+
+        ];
+
+
+        let currentPhoto = 0;
+
+
+        /* ===== OTWIERANIE ===== */
+
+        function openPhoto(index) {
+
+            currentPhoto = index;
+
+            updateModal();
+
+            document
+                .getElementById("photoModal")
+                .classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        /* ===== AKTUALIZACJA ===== */
+
+        function updateModal() {
+
+            const photo =
+                photos[currentPhoto];
+
+
+            document.getElementById("modalImage").src =
+                photo.image;
+
+
+            document.getElementById("modalCaption").innerHTML =
+
+                "<strong>" +
+                photo.title +
+                "</strong>" +
+
+                "<span>" +
+                photo.date +
+                "</span>";
+
+
+            document.getElementById("photoCounter").textContent =
+
+                (currentPhoto + 1) +
+                " / " +
+                photos.length;
+        }
+
+
+        /* ===== NASTĘPNE ===== */
+
+        function nextPhoto(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+            currentPhoto++;
+
+            if (currentPhoto >= photos.length) {
+                currentPhoto = 0;
+            }
+
+            updateModal();
+        }
+
+
+        /* ===== POPRZEDNIE ===== */
+
+        function previousPhoto(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+            currentPhoto--;
+
+            if (currentPhoto < 0) {
+                currentPhoto = photos.length - 1;
+            }
+
+            updateModal();
+        }
+
+
+        /* ===== ZAMKNIĘCIE ===== */
+
+        function closePhoto() {
+
+            document
+                .getElementById("photoModal")
+                .classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+
+        /* ===== KLIKNIĘCIE W TŁO ===== */
+
+        function backgroundClose(event) {
+
+            if (
+                event.target.id === "photoModal"
+            ) {
+                closePhoto();
+            }
+        }
+
+
+        /* ===== KLAWIATURA ===== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                const modal =
+                    document.getElementById("photoModal");
+
+
+                if (!modal.classList.contains("active")) {
+                    return;
+                }
+
+
+                if (event.key === "Escape") {
+
+                    closePhoto();
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    nextPhoto();
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    previousPhoto();
+
+                }
+
+            }
+        );
+
+
+        /* ===== SWIPE NA TELEFONIE ===== */
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+
+        document
+            .getElementById("photoModal")
+            .addEventListener(
+                "touchstart",
+                function(event) {
+
+                    touchStartX =
+                        event.changedTouches[0].screenX;
+
+                }
+            );
+
+
+        document
+            .getElementById("photoModal")
+            .addEventListener(
+                "touchend",
+                function(event) {
+
+                    touchEndX =
+                        event.changedTouches[0].screenX;
+
+                    handleSwipe();
+
+                }
+            );
+
+
+        function handleSwipe() {
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+
+            if (difference > 0) {
+
+                nextPhoto();
+
+            } else {
+
+                previousPhoto();
+
+            }
+
+        }
+
+    </script>
 
 </body>
-
 </html>
-
+```
